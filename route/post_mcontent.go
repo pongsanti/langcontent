@@ -12,6 +12,7 @@ import (
 	"github.com/pongsanti/langcontent/db/models"
 )
 
+// POST /mcontents
 func CreatePostMcontentHandlerFunc(db *sql.DB) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, req *http.Request) {
 		log.Print("Mcontent: PostMcontentHandlerFunc")

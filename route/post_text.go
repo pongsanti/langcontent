@@ -16,6 +16,7 @@ import (
 
 const McontentIDRouterParam = "contentID"
 
+// POST /mcontents/{contentID}/texts
 func CreatePostMcontentTextHandlerFunc(db *sql.DB) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, req *http.Request) {
 		log.Print("Mcontent: PostMcontentTextHandlerFunc")
