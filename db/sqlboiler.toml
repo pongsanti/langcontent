@@ -5,4 +5,4 @@ host = "localhost"
 dbname = "lib"
 user = "lib"
 pass = "lib"
-blacklist = ["goose_db_version"]
+blacklist = ["goose_db_version", "contents", "images"]

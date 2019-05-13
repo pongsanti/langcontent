@@ -4,13 +4,9 @@
 package models
 
 var TableNames = struct {
-	Contents      string
-	Images        string
 	McontentTexts string
 	Mcontents     string
 }{
-	Contents:      "contents",
-	Images:        "images",
 	McontentTexts: "mcontent_texts",
 	Mcontents:     "mcontents",
 }

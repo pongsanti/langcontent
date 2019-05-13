@@ -12,87 +12,61 @@ import "testing"
 // It does NOT run each operation group in parallel.
 // Separating the tests thusly grants avoidance of Postgres deadlocks.
 func TestParent(t *testing.T) {
-	t.Run("Contents", testContents)
-	t.Run("Images", testImages)
 	t.Run("McontentTexts", testMcontentTexts)
 	t.Run("Mcontents", testMcontents)
 }
 
 func TestDelete(t *testing.T) {
-	t.Run("Contents", testContentsDelete)
-	t.Run("Images", testImagesDelete)
 	t.Run("McontentTexts", testMcontentTextsDelete)
 	t.Run("Mcontents", testMcontentsDelete)
 }
 
 func TestQueryDeleteAll(t *testing.T) {
-	t.Run("Contents", testContentsQueryDeleteAll)
-	t.Run("Images", testImagesQueryDeleteAll)
 	t.Run("McontentTexts", testMcontentTextsQueryDeleteAll)
 	t.Run("Mcontents", testMcontentsQueryDeleteAll)
 }
 
 func TestSliceDeleteAll(t *testing.T) {
-	t.Run("Contents", testContentsSliceDeleteAll)
-	t.Run("Images", testImagesSliceDeleteAll)
 	t.Run("McontentTexts", testMcontentTextsSliceDeleteAll)
 	t.Run("Mcontents", testMcontentsSliceDeleteAll)
 }
 
 func TestExists(t *testing.T) {
-	t.Run("Contents", testContentsExists)
-	t.Run("Images", testImagesExists)
 	t.Run("McontentTexts", testMcontentTextsExists)
 	t.Run("Mcontents", testMcontentsExists)
 }
 
 func TestFind(t *testing.T) {
-	t.Run("Contents", testContentsFind)
-	t.Run("Images", testImagesFind)
 	t.Run("McontentTexts", testMcontentTextsFind)
 	t.Run("Mcontents", testMcontentsFind)
 }
 
 func TestBind(t *testing.T) {
-	t.Run("Contents", testContentsBind)
-	t.Run("Images", testImagesBind)
 	t.Run("McontentTexts", testMcontentTextsBind)
 	t.Run("Mcontents", testMcontentsBind)
 }
 
 func TestOne(t *testing.T) {
-	t.Run("Contents", testContentsOne)
-	t.Run("Images", testImagesOne)
 	t.Run("McontentTexts", testMcontentTextsOne)
 	t.Run("Mcontents", testMcontentsOne)
 }
 
 func TestAll(t *testing.T) {
-	t.Run("Contents", testContentsAll)
-	t.Run("Images", testImagesAll)
 	t.Run("McontentTexts", testMcontentTextsAll)
 	t.Run("Mcontents", testMcontentsAll)
 }
 
 func TestCount(t *testing.T) {
-	t.Run("Contents", testContentsCount)
-	t.Run("Images", testImagesCount)
 	t.Run("McontentTexts", testMcontentTextsCount)
 	t.Run("Mcontents", testMcontentsCount)
 }
 
 func TestHooks(t *testing.T) {
-	t.Run("Contents", testContentsHooks)
-	t.Run("Images", testImagesHooks)
 	t.Run("McontentTexts", testMcontentTextsHooks)
 	t.Run("Mcontents", testMcontentsHooks)
 }
 
 func TestInsert(t *testing.T) {
-	t.Run("Contents", testContentsInsert)
-	t.Run("Contents", testContentsInsertWhitelist)
-	t.Run("Images", testImagesInsert)
-	t.Run("Images", testImagesInsertWhitelist)
 	t.Run("McontentTexts", testMcontentTextsInsert)
 	t.Run("McontentTexts", testMcontentTextsInsertWhitelist)
 	t.Run("Mcontents", testMcontentsInsert)
@@ -148,36 +122,26 @@ func TestToManySet(t *testing.T) {}
 func TestToManyRemove(t *testing.T) {}
 
 func TestReload(t *testing.T) {
-	t.Run("Contents", testContentsReload)
-	t.Run("Images", testImagesReload)
 	t.Run("McontentTexts", testMcontentTextsReload)
 	t.Run("Mcontents", testMcontentsReload)
 }
 
 func TestReloadAll(t *testing.T) {
-	t.Run("Contents", testContentsReloadAll)
-	t.Run("Images", testImagesReloadAll)
 	t.Run("McontentTexts", testMcontentTextsReloadAll)
 	t.Run("Mcontents", testMcontentsReloadAll)
 }
 
 func TestSelect(t *testing.T) {
-	t.Run("Contents", testContentsSelect)
-	t.Run("Images", testImagesSelect)
 	t.Run("McontentTexts", testMcontentTextsSelect)
 	t.Run("Mcontents", testMcontentsSelect)
 }
 
 func TestUpdate(t *testing.T) {
-	t.Run("Contents", testContentsUpdate)
-	t.Run("Images", testImagesUpdate)
 	t.Run("McontentTexts", testMcontentTextsUpdate)
 	t.Run("Mcontents", testMcontentsUpdate)
 }
 
 func TestSliceUpdateAll(t *testing.T) {
-	t.Run("Contents", testContentsSliceUpdateAll)
-	t.Run("Images", testImagesSliceUpdateAll)
 	t.Run("McontentTexts", testMcontentTextsSliceUpdateAll)
 	t.Run("Mcontents", testMcontentsSliceUpdateAll)
 }
