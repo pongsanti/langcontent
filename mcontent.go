@@ -43,7 +43,7 @@ func NewMcontentTextReses(mcont *models.Mcontent) []McontentTextRes {
 
 	var reses []McontentTextRes
 	for _, text := range texts {
-		reses = append(reses, NewMcontentTextRest(text))
+		reses = append(reses, NewMcontentTextRes(text))
 	}
 	return reses
 }
@@ -58,7 +58,7 @@ type McontentTextRes struct {
 	Xtext1    *string
 }
 
-func NewMcontentTextRest(mcontText *models.McontentText) McontentTextRes {
+func NewMcontentTextRes(mcontText *models.McontentText) McontentTextRes {
 	return McontentTextRes{
 		ID:        mcontText.ID,
 		CreatedAt: mcontText.CreatedAt.Ptr(),
