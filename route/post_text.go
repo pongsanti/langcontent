@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/volatiletech/sqlboiler/queries/qm"
+
 	"github.com/volatiletech/null"
 
 	"github.com/go-chi/chi"
@@ -53,15 +55,55 @@ func CreatePostMcontentTextHandlerFunc(db *sql.DB) func(http.ResponseWriter, *ht
 			Xtext1:   null.StringFromPtr(reqData.Xtext1),
 		}
 
-		// find mcontent
-		mcont, err := models.FindMcontent(ctx, db, mcontID)
+		// new tx
+		tx, err := db.Begin()
 		if err != nil {
+			log.Print("Error create new tx ", err)
+			renderError(errConnectingDatabase)
+			return
+		}
+
+		// delete existing texts of the language we will insert
+		_, err = models.McontentTexts(
+			models.McontentTextWhere.McontentID.EQ(mcontID),
+			models.McontentTextWhere.Lang.EQ(reqData.Lang),
+		).DeleteAll(ctx, tx)
+		if err != nil {
+			log.Print("Error delete texts ", err)
+			tx.Rollback()
+			renderError(errConnectingDatabase)
+			return
+		}
+
+		// find mcontent
+		mcont, err := models.Mcontents(
+			models.McontentWhere.ID.EQ(mcontID),
+			models.McontentWhere.DeletedAt.IsNull(),
+			qm.Load(models.McontentRels.McontentTexts),
+		).One(ctx, tx)
+		if err != nil {
+			log.Print("Error find mcont ", err)
+			tx.Rollback()
 			renderError(errMcontentIdInvalid)
 			return
 		}
 
 		// associate text to mcontent
 		err = mcont.AddMcontentTexts(ctx, db, true, &text)
+		if err != nil {
+			log.Print("Error associate text with mcontent ", err)
+			tx.Rollback()
+			renderError(errConnectingDatabase)
+			return
+		}
+
+		// commit tx
+		if err = tx.Commit(); err != nil {
+			log.Print("Error commit tx ", err)
+			tx.Rollback()
+			renderError(errConnectingDatabase)
+			return
+		}
 
 		render.JSON(w, req, newPostTextRes(text))
 	}
