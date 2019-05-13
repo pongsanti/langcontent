@@ -1,0 +1,8 @@
+# sqlboiler --wipe psql
+
+[psql]
+host = "localhost"
+dbname = "lib"
+user = "lib"
+pass = "lib"
+blacklist = ["goose_db_version"]
