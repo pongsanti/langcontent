@@ -722,7 +722,7 @@ func testMcontentsSelect(t *testing.T) {
 }
 
 var (
-	mcontentDBTypes = map[string]string{`ID`: `integer`, `CreatedAt`: `timestamp with time zone`, `UpdatedAt`: `timestamp with time zone`, `DeletedAt`: `timestamp with time zone`, `ContentType`: `text`, `StartAt`: `timestamp with time zone`, `EndAt`: `timestamp with time zone`, `Status`: `text`, `Xtime1`: `timestamp with time zone`, `CreatorID`: `integer`}
+	mcontentDBTypes = map[string]string{`ID`: `integer`, `CreatedAt`: `timestamp with time zone`, `UpdatedAt`: `timestamp with time zone`, `DeletedAt`: `timestamp with time zone`, `Label`: `text`, `ContentType`: `text`, `StartAt`: `timestamp with time zone`, `EndAt`: `timestamp with time zone`, `Status`: `text`, `Xtime1`: `timestamp with time zone`, `CreatorID`: `integer`}
 	_               = bytes.MinRead
 )
 

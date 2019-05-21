@@ -6,6 +6,7 @@ import (
 )
 
 type postMcontentReq struct {
+	Label       string
 	ContentType string
 	StartAt     *time.Time
 	EndAt       *time.Time

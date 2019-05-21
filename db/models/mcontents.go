@@ -28,6 +28,7 @@ type Mcontent struct {
 	CreatedAt   null.Time   `boil:"created_at" json:"created_at,omitempty" toml:"created_at" yaml:"created_at,omitempty"`
 	UpdatedAt   null.Time   `boil:"updated_at" json:"updated_at,omitempty" toml:"updated_at" yaml:"updated_at,omitempty"`
 	DeletedAt   null.Time   `boil:"deleted_at" json:"deleted_at,omitempty" toml:"deleted_at" yaml:"deleted_at,omitempty"`
+	Label       string      `boil:"label" json:"label" toml:"label" yaml:"label"`
 	ContentType string      `boil:"content_type" json:"content_type" toml:"content_type" yaml:"content_type"`
 	StartAt     null.Time   `boil:"start_at" json:"start_at,omitempty" toml:"start_at" yaml:"start_at,omitempty"`
 	EndAt       null.Time   `boil:"end_at" json:"end_at,omitempty" toml:"end_at" yaml:"end_at,omitempty"`
@@ -44,6 +45,7 @@ var McontentColumns = struct {
 	CreatedAt   string
 	UpdatedAt   string
 	DeletedAt   string
+	Label       string
 	ContentType string
 	StartAt     string
 	EndAt       string
@@ -55,6 +57,7 @@ var McontentColumns = struct {
 	CreatedAt:   "created_at",
 	UpdatedAt:   "updated_at",
 	DeletedAt:   "deleted_at",
+	Label:       "label",
 	ContentType: "content_type",
 	StartAt:     "start_at",
 	EndAt:       "end_at",
@@ -70,6 +73,7 @@ var McontentWhere = struct {
 	CreatedAt   whereHelpernull_Time
 	UpdatedAt   whereHelpernull_Time
 	DeletedAt   whereHelpernull_Time
+	Label       whereHelperstring
 	ContentType whereHelperstring
 	StartAt     whereHelpernull_Time
 	EndAt       whereHelpernull_Time
@@ -81,6 +85,7 @@ var McontentWhere = struct {
 	CreatedAt:   whereHelpernull_Time{field: `created_at`},
 	UpdatedAt:   whereHelpernull_Time{field: `updated_at`},
 	DeletedAt:   whereHelpernull_Time{field: `deleted_at`},
+	Label:       whereHelperstring{field: `label`},
 	ContentType: whereHelperstring{field: `content_type`},
 	StartAt:     whereHelpernull_Time{field: `start_at`},
 	EndAt:       whereHelpernull_Time{field: `end_at`},
@@ -110,9 +115,9 @@ func (*mcontentR) NewStruct() *mcontentR {
 type mcontentL struct{}
 
 var (
-	mcontentColumns               = []string{"id", "created_at", "updated_at", "deleted_at", "content_type", "start_at", "end_at", "status", "xtime1", "creator_id"}
+	mcontentColumns               = []string{"id", "created_at", "updated_at", "deleted_at", "label", "content_type", "start_at", "end_at", "status", "xtime1", "creator_id"}
 	mcontentColumnsWithoutDefault = []string{"created_at", "updated_at", "deleted_at", "start_at", "end_at", "status", "xtime1", "creator_id"}
-	mcontentColumnsWithDefault    = []string{"id", "content_type"}
+	mcontentColumnsWithDefault    = []string{"id", "label", "content_type"}
 	mcontentPrimaryKeyColumns     = []string{"id"}
 )
 

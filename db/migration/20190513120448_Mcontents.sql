@@ -5,6 +5,7 @@ CREATE TABLE mcontents (
   created_at timestamp with time zone,
   updated_at timestamp with time zone,
   deleted_at timestamp with time zone,
+  label text NOT NULL DEFAULT '',
   content_type text NOT NULL DEFAULT 'news',
   start_at timestamp with time zone,
   end_at timestamp with time zone,

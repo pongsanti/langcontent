@@ -59,6 +59,9 @@ func CreatePatchMcontentHandlerFunc(db *sql.DB) func(http.ResponseWriter, *http.
 		}
 
 		// update model
+		if reqData.Label != nil {
+			mcont.Label = *reqData.Label
+		}
 		if reqData.StartAt != nil {
 			mcont.StartAt = null.TimeFromPtr(reqData.StartAt)
 		}
@@ -73,6 +76,7 @@ func CreatePatchMcontentHandlerFunc(db *sql.DB) func(http.ResponseWriter, *http.
 		}
 
 		_, err = mcont.Update(ctx, db, boil.Whitelist(
+			models.McontentColumns.Label,
 			models.McontentColumns.StartAt,
 			models.McontentColumns.EndAt,
 			models.McontentColumns.Status,

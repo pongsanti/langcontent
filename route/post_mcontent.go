@@ -33,6 +33,7 @@ func CreatePostMcontentHandlerFunc(db *sql.DB) func(http.ResponseWriter, *http.R
 		}
 
 		mcont := models.Mcontent{
+			Label:       reqData.Label,
 			ContentType: reqData.ContentType,
 			StartAt:     null.TimeFromPtr(reqData.StartAt),
 			EndAt:       null.TimeFromPtr((reqData.EndAt)),
