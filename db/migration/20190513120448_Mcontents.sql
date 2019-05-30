@@ -11,6 +11,7 @@ CREATE TABLE mcontents (
   end_at timestamp with time zone,
   status text,
   xtime1 timestamp with time zone,
+  xbool1 boolean,
   creator_id integer
 );
 

@@ -34,6 +34,7 @@ type Mcontent struct {
 	EndAt       null.Time   `boil:"end_at" json:"end_at,omitempty" toml:"end_at" yaml:"end_at,omitempty"`
 	Status      null.String `boil:"status" json:"status,omitempty" toml:"status" yaml:"status,omitempty"`
 	Xtime1      null.Time   `boil:"xtime1" json:"xtime1,omitempty" toml:"xtime1" yaml:"xtime1,omitempty"`
+	Xbool1      null.Bool   `boil:"xbool1" json:"xbool1,omitempty" toml:"xbool1" yaml:"xbool1,omitempty"`
 	CreatorID   null.Int    `boil:"creator_id" json:"creator_id,omitempty" toml:"creator_id" yaml:"creator_id,omitempty"`
 
 	R *mcontentR `boil:"-" json:"-" toml:"-" yaml:"-"`
@@ -51,6 +52,7 @@ var McontentColumns = struct {
 	EndAt       string
 	Status      string
 	Xtime1      string
+	Xbool1      string
 	CreatorID   string
 }{
 	ID:          "id",
@@ -63,10 +65,34 @@ var McontentColumns = struct {
 	EndAt:       "end_at",
 	Status:      "status",
 	Xtime1:      "xtime1",
+	Xbool1:      "xbool1",
 	CreatorID:   "creator_id",
 }
 
 // Generated where
+
+type whereHelpernull_Bool struct{ field string }
+
+func (w whereHelpernull_Bool) EQ(x null.Bool) qm.QueryMod {
+	return qmhelper.WhereNullEQ(w.field, false, x)
+}
+func (w whereHelpernull_Bool) NEQ(x null.Bool) qm.QueryMod {
+	return qmhelper.WhereNullEQ(w.field, true, x)
+}
+func (w whereHelpernull_Bool) IsNull() qm.QueryMod    { return qmhelper.WhereIsNull(w.field) }
+func (w whereHelpernull_Bool) IsNotNull() qm.QueryMod { return qmhelper.WhereIsNotNull(w.field) }
+func (w whereHelpernull_Bool) LT(x null.Bool) qm.QueryMod {
+	return qmhelper.Where(w.field, qmhelper.LT, x)
+}
+func (w whereHelpernull_Bool) LTE(x null.Bool) qm.QueryMod {
+	return qmhelper.Where(w.field, qmhelper.LTE, x)
+}
+func (w whereHelpernull_Bool) GT(x null.Bool) qm.QueryMod {
+	return qmhelper.Where(w.field, qmhelper.GT, x)
+}
+func (w whereHelpernull_Bool) GTE(x null.Bool) qm.QueryMod {
+	return qmhelper.Where(w.field, qmhelper.GTE, x)
+}
 
 var McontentWhere = struct {
 	ID          whereHelperint
@@ -79,6 +105,7 @@ var McontentWhere = struct {
 	EndAt       whereHelpernull_Time
 	Status      whereHelpernull_String
 	Xtime1      whereHelpernull_Time
+	Xbool1      whereHelpernull_Bool
 	CreatorID   whereHelpernull_Int
 }{
 	ID:          whereHelperint{field: `id`},
@@ -91,6 +118,7 @@ var McontentWhere = struct {
 	EndAt:       whereHelpernull_Time{field: `end_at`},
 	Status:      whereHelpernull_String{field: `status`},
 	Xtime1:      whereHelpernull_Time{field: `xtime1`},
+	Xbool1:      whereHelpernull_Bool{field: `xbool1`},
 	CreatorID:   whereHelpernull_Int{field: `creator_id`},
 }
 
@@ -115,8 +143,8 @@ func (*mcontentR) NewStruct() *mcontentR {
 type mcontentL struct{}
 
 var (
-	mcontentColumns               = []string{"id", "created_at", "updated_at", "deleted_at", "label", "content_type", "start_at", "end_at", "status", "xtime1", "creator_id"}
-	mcontentColumnsWithoutDefault = []string{"created_at", "updated_at", "deleted_at", "start_at", "end_at", "status", "xtime1", "creator_id"}
+	mcontentColumns               = []string{"id", "created_at", "updated_at", "deleted_at", "label", "content_type", "start_at", "end_at", "status", "xtime1", "xbool1", "creator_id"}
+	mcontentColumnsWithoutDefault = []string{"created_at", "updated_at", "deleted_at", "start_at", "end_at", "status", "xtime1", "xbool1", "creator_id"}
 	mcontentColumnsWithDefault    = []string{"id", "label", "content_type"}
 	mcontentPrimaryKeyColumns     = []string{"id"}
 )
