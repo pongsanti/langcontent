@@ -9,6 +9,7 @@ import (
 type McontentRes struct {
 	ID          int
 	CreatedAt   *time.Time
+	DeletedAt   *time.Time
 	Label       string
 	ContentType string
 	StartAt     *time.Time
@@ -24,6 +25,7 @@ func NewMcontentRes(mcont models.Mcontent) McontentRes {
 	return McontentRes{
 		ID:          mcont.ID,
 		CreatedAt:   mcont.CreatedAt.Ptr(),
+		DeletedAt:   mcont.DeletedAt.Ptr(),
 		Label:       mcont.Label,
 		ContentType: mcont.ContentType,
 		StartAt:     mcont.StartAt.Ptr(),

@@ -3,6 +3,8 @@ package route
 import (
 	"net/http"
 	"time"
+
+	"github.com/pongsanti/langcontent/share"
 )
 
 type patchMcontentReq struct {
@@ -12,6 +14,7 @@ type patchMcontentReq struct {
 	EndAt       *time.Time
 	Status      *string
 	Xtime1      *time.Time
+	DeletedAt   share.JSONTime
 }
 
 func (m *patchMcontentReq) Bind(r *http.Request) error {

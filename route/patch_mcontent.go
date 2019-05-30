@@ -40,7 +40,6 @@ func CreatePatchMcontentHandlerFunc(db *sql.DB) func(http.ResponseWriter, *http.
 
 		// find mcontent
 		mcont, err := models.Mcontents(
-			models.McontentWhere.DeletedAt.IsNull(),
 			models.McontentWhere.ID.EQ(mcontID),
 			qm.Load(models.McontentRels.McontentTexts,
 				qm.OrderBy("lang asc, id desc")),
@@ -74,6 +73,13 @@ func CreatePatchMcontentHandlerFunc(db *sql.DB) func(http.ResponseWriter, *http.
 		if reqData.Xtime1 != nil {
 			mcont.Xtime1 = null.TimeFromPtr(reqData.Xtime1)
 		}
+		if reqData.DeletedAt.Set {
+			if !reqData.DeletedAt.Valid {
+				mcont.DeletedAt = null.TimeFromPtr(nil)
+			} else {
+				mcont.DeletedAt = null.TimeFrom(reqData.DeletedAt.Value)
+			}
+		}
 
 		_, err = mcont.Update(ctx, db, boil.Whitelist(
 			models.McontentColumns.Label,
@@ -81,6 +87,7 @@ func CreatePatchMcontentHandlerFunc(db *sql.DB) func(http.ResponseWriter, *http.
 			models.McontentColumns.EndAt,
 			models.McontentColumns.Status,
 			models.McontentColumns.Xtime1,
+			models.McontentColumns.DeletedAt,
 		))
 		if err != nil {
 			log.Print("Error updating an mcontent ", err)
