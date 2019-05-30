@@ -39,6 +39,7 @@ func CreatePostMcontentHandlerFunc(db *sql.DB) func(http.ResponseWriter, *http.R
 			EndAt:       null.TimeFromPtr((reqData.EndAt)),
 			Status:      null.StringFromPtr(reqData.Status),
 			Xtime1:      null.TimeFromPtr(reqData.Xtime1),
+			Xbool1:      null.BoolFromPtr(reqData.Xbool1),
 		}
 
 		// new tx

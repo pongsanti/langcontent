@@ -12,6 +12,7 @@ type postMcontentReq struct {
 	EndAt       *time.Time
 	Status      *string
 	Xtime1      *time.Time
+	Xbool1      *bool
 }
 
 func (m *postMcontentReq) Bind(r *http.Request) error {

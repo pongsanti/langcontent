@@ -16,6 +16,7 @@ type McontentRes struct {
 	EndAt       *time.Time
 	Status      *string
 	Xtime1      *time.Time
+	Xbool1      *bool
 	Texts       []McontentTextRes
 }
 
@@ -32,6 +33,7 @@ func NewMcontentRes(mcont models.Mcontent) McontentRes {
 		EndAt:       mcont.EndAt.Ptr(),
 		Status:      mcont.Status.Ptr(),
 		Xtime1:      mcont.Xtime1.Ptr(),
+		Xbool1:      mcont.Xbool1.Ptr(),
 		Texts:       texts,
 	}
 }
