@@ -46,6 +46,7 @@ func CreatePatchMcontentHandlerFunc(db *sql.DB) func(http.ResponseWriter, *http.
 				qm.OrderBy("lang asc, id desc")),
 		).One(ctx, db)
 		if err != nil {
+			log.Print("Error select one mcontents ", err)
 			renderError(errMcontentIdInvalid)
 			return
 		}
