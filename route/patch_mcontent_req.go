@@ -14,6 +14,7 @@ type patchMcontentReq struct {
 	EndAt       *time.Time
 	Status      *string
 	Xtime1      *time.Time
+	Xbool1      *bool
 	DeletedAt   share.JSONTime
 }
 

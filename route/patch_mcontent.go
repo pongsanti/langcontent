@@ -73,6 +73,9 @@ func CreatePatchMcontentHandlerFunc(db *sql.DB) func(http.ResponseWriter, *http.
 		if reqData.Xtime1 != nil {
 			mcont.Xtime1 = null.TimeFromPtr(reqData.Xtime1)
 		}
+		if reqData.Xbool1 != nil {
+			mcont.Xbool1 = null.BoolFromPtr(reqData.Xbool1)
+		}
 		if reqData.DeletedAt.Set {
 			if !reqData.DeletedAt.Valid {
 				mcont.DeletedAt = null.TimeFromPtr(nil)
@@ -87,6 +90,7 @@ func CreatePatchMcontentHandlerFunc(db *sql.DB) func(http.ResponseWriter, *http.
 			models.McontentColumns.EndAt,
 			models.McontentColumns.Status,
 			models.McontentColumns.Xtime1,
+			models.McontentColumns.Xbool1,
 			models.McontentColumns.DeletedAt,
 		))
 		if err != nil {
