@@ -24,6 +24,7 @@ func CreatePatchMcontentTextHandlerFunc(db *sql.DB) func(http.ResponseWriter, *h
 
 		ctx := req.Context()
 		renderError := func(err error) {
+			render.Status(req, 400)
 			render.JSON(w, req, struct{ Error string }{
 				err.Error(),
 			})
