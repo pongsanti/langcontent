@@ -13,6 +13,7 @@ import (
 )
 
 // POST /mcontents
+// Put comment just for v4
 func CreatePostMcontentHandlerFunc(db *sql.DB) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, req *http.Request) {
 		log.Print("Mcontent: PostMcontentHandlerFunc")
